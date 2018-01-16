@@ -34,7 +34,7 @@ from setuptools import setup
 
 setup(
     name='vrb',
-    version='1.0',
+    version='0.1',
     description='Variance Reducer Bandit',
     author='Zalan Borsos',
     author_email='zalan.borsos@inf.ethz.ch',
@@ -42,5 +42,12 @@ setup(
     keywords='machine learning online variance reduction bandits',
     install_requires=["numpy", "nose"],
     ext_modules=[Extension('vrb', sources=['segment_tree.c'], extra_compile_args=['-O3'])],
-    include_dirs=[np.get_include()]
+    include_dirs=[np.get_include()],
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.5'
+    ]
 )
