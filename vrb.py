@@ -29,10 +29,9 @@ class SamplerBase:
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def __init__(self, X, random_state):
+    def __init__(self, n, random_state):
         self.random_state = random_state
-        self.X = X
-        self.n = X.shape[0]
+        self.n = n
         pass
 
     @abstractmethod
@@ -53,17 +52,17 @@ class VarianceReducerBandit(SamplerBase):
     Variance Reducer Bandit with segment tree sampler
 
     Args:
-            X: np.ndarray of shape (n, d) representing the data points
+            n: the number of points
             random_state: np.random.RandomState instance used for seeding
             reg: regularizer; can be 1d np.ndarray of shape n or a scalar. If array is passed,
                 the regularization happens per point, otherwise globally.
-            gamma: coefficient of mixing with uniform distribution
+            theta: coefficient of mixing with uniform distribution
     """
 
-    def __init__(self, X, random_state, reg, gamma):
-        super(VarianceReducerBandit, self).__init__(X, random_state)
-        self.gamma = gamma
+    def __init__(self, n, random_state, reg, theta):
+        super(VarianceReducerBandit, self).__init__(n, random_state)
         self.reg = reg
+        self.theta = theta
         self.st = segment_tree.SegmentTreeSampler(self.n, np.ones(self.n) * reg, self.random_state)
 
     def sample(self, batch_size):
@@ -76,9 +75,9 @@ class VarianceReducerBandit(SamplerBase):
         Returns:
             a tuple consisting of the sampled indices and their corresponding probabilities
         """
-        self.last_sampled, self.p = self.st.batch_sample(batch_size, self.gamma)
-        self.last_sampled = np.asarray(self.last_sampled)
-        self.p = np.asarray(self.p)
+        last_sampled, p = self.st.batch_sample(batch_size, self.theta)
+        self.last_sampled = np.asarray(last_sampled)
+        self.p = np.asarray(p)
         return self.last_sampled.reshape(-1), self.p
 
     def update(self, loss):

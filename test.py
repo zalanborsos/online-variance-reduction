@@ -53,11 +53,10 @@ def test_sampling():
 
 
 def test_bandit():
-    n, d = 10, 100
-    X = np.random.rand(n, d)
+    n = 10
 
     # vrb with regularization L = 1, 0 mixing
-    sampler = vrb.VarianceReducerBandit(X, np.random.RandomState(0), 1, 0)
+    sampler = vrb.VarianceReducerBandit(n, np.random.RandomState(0), 1, 0)
 
     # sampler a point, check if its sampling probability is 1 / n
     ind, p = sampler.sample(1)

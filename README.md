@@ -22,6 +22,7 @@ pip install .
 Usage
 ---
 
+The main entry point of the sampler is `vrb.VarianceReducerBandit`. The sampler should be trained with alternatingly calling its `sample()` and `update()` methods.  
 
 Tests
 ---
