@@ -4,11 +4,11 @@ Online Variance Reduction
 Introduction
 ---
 
-The package is a Cython implementation of the bandit sampling algorithm for online variance reduction presented inthe paper:
+The package is a Cython implementation of the bandit sampling algorithm for online variance reduction presented in the paper:
 
 Installation
 ---
-Install `numpy` with 
+First, install `numpy` with 
 ```
 pip install numpy
 ```
@@ -32,7 +32,7 @@ nosetests
 
 Feedback
 ---
-Please send any feedback to Zalan Borsos (firstname.lastname@inf.ethz.ch).
+Please send any feedback to [Zalan Borsos](https://las.inf.ethz.ch/people/zalan-borsos).
 
 License
 ---
