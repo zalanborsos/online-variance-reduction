@@ -21,27 +21,19 @@
 # SOFTWARE.
 
 import numpy as np
-from setuptools import Extension
-from distutils.core import setup
-from Cython.Build import cythonize
-
-setup(
-    ext_modules=cythonize('segment_tree.pyx'),
-    include_dirs=[np.get_include()]
-)
-
-from setuptools import setup
+from setuptools import setup, Extension
 
 setup(
     name='vrb',
-    version='0.1',
+    packages=['vrb'],
+    version='0.4',
     description='Variance Reducer Bandit',
     author='Zalan Borsos',
     author_email='zalan.borsos@inf.ethz.ch',
     license='MIT',
     keywords='machine learning online variance reduction bandits',
-    install_requires=["numpy", "nose"],
-    ext_modules=[Extension('vrb', sources=['segment_tree.c'], extra_compile_args=['-O3'])],
+    install_requires=["numpy >= 1.7", "nose >= 1.3.7"],
+    ext_modules=[Extension('segment_tree', sources=['vrb/segment_tree.c'], extra_compile_args=['-O3'])],
     include_dirs=[np.get_include()],
     classifiers=[
         'Development Status :: 4 - Beta',

@@ -30,6 +30,8 @@ class SamplerBase:
 
     @abstractmethod
     def __init__(self, n, random_state):
+        if random_state is None or isinstance(random_state, int):
+            random_state = np.random.RandomState(random_state)
         self.random_state = random_state
         self.n = n
         pass
@@ -53,7 +55,7 @@ class VarianceReducerBandit(SamplerBase):
 
     Args:
             n: the number of points
-            random_state: np.random.RandomState instance used for seeding
+            random_state: np.random.RandomState instance or int used for seeding
             reg: regularizer; can be 1d np.ndarray of shape n or a scalar. If array is passed,
                 the regularization happens per point, otherwise globally.
             theta: coefficient of mixing with uniform distribution
@@ -88,11 +90,11 @@ class VarianceReducerBandit(SamplerBase):
             loss: np.ndarray representing the losses incurred for the points returned by the last call to sample()
 
         """
-        self.st.batch_update(self.last_sampled, loss / self.p)
+        self.st.batch_update(self.last_sampled, loss ** 2 / self.p)
 
     def reset(self):
         """
-        Resets the sampling distirbution to its initial state.
+        Resets the sampling distribution to its initial state.
 
         """
         self.st = segment_tree.SegmentTreeSampler(self.n, np.ones(self.n) * self.reg, self.random_state)

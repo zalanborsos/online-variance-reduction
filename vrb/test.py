@@ -56,13 +56,13 @@ def test_bandit():
     n = 10
 
     # vrb with regularization L = 1, 0 mixing
-    sampler = vrb.VarianceReducerBandit(n, np.random.RandomState(0), 1, 0)
+    sampler = vrb.VarianceReducerBandit(n, 0, 1, 0)
 
     # sampler a point, check if its sampling probability is 1 / n
     ind, p = sampler.sample(1)
     assert np.allclose([p], [1. / n])
 
-    # provide 1 as loss, find it again and assert its sampling probability is np.sqrt(11) / (np.sqrt(11) + 9)
+    # provide 1 as loss, sample the point again and assert its sampling probability is np.sqrt(11) / (np.sqrt(11) + 9)
     sampler.update(1)
     ind2, p = sampler.sample(1)
     while ind != ind2:

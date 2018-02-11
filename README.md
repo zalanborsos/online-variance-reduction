@@ -22,7 +22,15 @@ pip install .
 Usage
 ---
 
-The main entry point of the sampler is `vrb.VarianceReducerBandit`. The sampler should be trained with alternatingly calling its `sample()` and `update()` methods.  
+The main entry point of the sampler is `vrb.VarianceReducerBandit`. The sampler should be used with alternatingly calling its `sample()` and `update()` as the following snippet shows:
+```python
+n = 100 # number of data points
+sampler = vrb.VarianceReducerBandit(n=n, random_state=0, reg=1, theta=0.1)
+for t in range(100): # proceed in 100 rounds
+    i, p = sampler.sample(1) # sample 1 points
+    loss = adversary.get_loss(i, p) # loss provided by the adversary, e.g. norm of the gradient in SGD
+    sampler.update(loss) # feed the loss back to the sampler 
+```  
 
 Tests
 ---
