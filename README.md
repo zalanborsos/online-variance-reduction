@@ -4,7 +4,7 @@ Online Variance Reduction
 Introduction
 ---
 
-The package is a Cython implementation of the bandit sampling algorithm for online variance reduction presented in the paper:
+The package is the implementation of the bandit sampling algorithm for online variance reduction presented in the paper:
 
 Installation
 ---
@@ -13,10 +13,14 @@ First, install `numpy` with
 pip install numpy
 ```
 
+The following command will then install `vrb` from PyPI:
+```
+pip install vrb
+```
+
 You can install the package `vrb` locally by running:
 ```
-pip install cython
-pip install .
+python setup.py install
 ```
 
 Usage
