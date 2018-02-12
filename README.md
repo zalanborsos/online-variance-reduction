@@ -6,6 +6,8 @@ Introduction
 
 The package is the implementation of the bandit sampling algorithm for online variance reduction presented in the paper:
 
+The implementation is compatible with Python 2.7.
+
 Installation
 ---
 First, install `numpy` with 
@@ -35,6 +37,7 @@ for t in range(100): # proceed in 100 rounds
     loss = adversary.get_loss(i, p) # loss provided by the adversary, e.g. norm of the gradient in SGD
     sampler.update(loss) # feed the loss back to the sampler 
 ```  
+For a detailed example, see the jupyter notebook in examples.
 
 Tests
 ---
