@@ -37,7 +37,7 @@ for t in range(100): # proceed in 100 rounds
     loss = adversary.get_loss(i, p) # loss provided by the adversary, e.g. norm of the gradient in SGD
     sampler.update(loss) # feed the loss back to the sampler 
 ```  
-For a detailed example, see the jupyter notebook in examples.
+For a detailed example, see the ipython notebook in examples.
 
 Tests
 ---
