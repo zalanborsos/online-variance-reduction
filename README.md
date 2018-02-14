@@ -6,6 +6,10 @@ Introduction
 
 The package is the implementation of the bandit sampling algorithm for online variance reduction presented in the paper:
 
+> [**Online Variance Reduction for Stochastic Optimization**](https://arxiv.org/pdf/1802.04715.pdf)
+> *Zalán Borsos, Andreas Krause, Kfir Y. Levy*.
+> arXiv preprint arXiv:1802.04715, 2018.
+
 The implementation is compatible with Python 2.7.
 
 Installation
@@ -48,7 +52,7 @@ nosetests
 
 Feedback
 ---
-Please send any feedback to [Zalan Borsos](https://las.inf.ethz.ch/people/zalan-borsos).
+Please send any feedback to [Zalán Borsos](https://las.inf.ethz.ch/people/zalan-borsos).
 
 License
 ---
