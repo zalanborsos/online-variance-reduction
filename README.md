@@ -10,23 +10,18 @@ The package is the implementation of the bandit sampling algorithm for online va
 > *Zalán Borsos, Andreas Krause, Kfir Y. Levy*.
 > arXiv preprint arXiv:1802.04715, 2018.
 
-The implementation is compatible with Python 2.7.
+The implementation is compatible with Python 2 and 3
 
 Installation
 ---
-First, install `numpy` with 
+First, install the dependencies with 
 ```
-pip install numpy
-```
-
-The following command will then install `vrb` from PyPI:
-```
-pip install vrb
+pip install numpy nose Cython
 ```
 
 You can install the package `vrb` locally by running:
 ```
-python setup.py install
+python setup.py build_ext --inplace
 ```
 
 Usage

@@ -22,6 +22,7 @@
 
 import numpy as np
 from setuptools import setup, Extension
+from Cython.Build import cythonize
 
 setup(
     name='vrb',
@@ -33,8 +34,7 @@ setup(
     license='MIT',
     keywords='machine learning online variance reduction bandits',
     install_requires=["numpy >= 1.7", "nose >= 1.3.7"],
-    ext_modules=[Extension('segment_tree', sources=['vrb/segment_tree.c'], extra_compile_args=['-O3'])],
-    include_dirs=[np.get_include()],
+    ext_modules=cythonize([Extension('segment_tree', ['vrb/segment_tree.pyx'], include_dirs=[np.get_include()])]),
     classifiers=[
         'Development Status :: 4 - Beta',
         'License :: OSI Approved :: MIT License',
