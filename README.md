@@ -8,7 +8,7 @@ The package is the implementation of the bandit sampling algorithm for online va
 
 > [**Online Variance Reduction for Stochastic Optimization**](https://arxiv.org/pdf/1802.04715.pdf)
 > *Zalán Borsos, Andreas Krause, Kfir Y. Levy*.
-> arXiv preprint arXiv:1802.04715, 2018.
+> Conference On Learning Theory (COLT), 2018.
 
 The implementation is compatible with Python 2 and 3
 
